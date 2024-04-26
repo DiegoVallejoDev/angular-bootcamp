@@ -15,6 +15,11 @@ import { Homework6Component } from './homework6/homework6.component';
 import { Homework7Component } from './homework7/homework7.component';
 import { CapitalizePipe } from './capitalize.pipe';
 import { CurrencyPipe } from './currency.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Homework8Component } from './homework8/homework8.component';
+import { Homework8DialogComponent } from './homework8-dialog/homework8-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -28,8 +33,18 @@ import { CurrencyPipe } from './currency.pipe';
     Homework7Component,
     CapitalizePipe,
     CurrencyPipe,
+    Homework8Component,
+    Homework8DialogComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, MyFirstModuleModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    MyFirstModuleModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatFormFieldModule,
+  ],
   providers: [RootInjectableService],
   bootstrap: [AppComponent],
 })
