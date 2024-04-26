@@ -1,0 +1,38 @@
+<h1>Directivas estructurales</h1>
+<h2>ngFor</h2>
+<p>- Renderizar un arreglo de strings [“A”, “B”, “C”] usando ngFor</p>
+<ul>
+    <li *ngFor="let item of letters">{{ item }}</li>
+</ul>
+
+<h2>ngIf</h2>
+<p>
+    Mostrar del arreglo anterior solo los ítems que no equivalgan a “B” usando
+    ngIf
+</p>
+
+<ul>
+    <ng-container *ngFor="let letter of letters">
+        <li *ngIf="letter !== 'B'">
+            {{ letter }}
+        </li>
+    </ng-container>
+</ul>
+
+<h2>ngSwitch</h2>
+
+<p>
+    - Para la misma lista anterior, en otro apartado, usar ngSwitch de tal forma
+    que si el item es “A” mostrar el número 1, “B” el número 2 y “C” el número 3
+    respectivamente.
+</p>
+
+<ul>
+    <li *ngFor="let item of letters">
+        <span [ngSwitch]="item">
+            <span *ngSwitchCase="'A'">1</span>
+            <span *ngSwitchCase="'B'">2</span>
+            <span *ngSwitchCase="'C'">3</span>
+        </span>
+    </li>
+</ul>
