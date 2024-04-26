@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class RootInjectableService {
-  public name = 'RootInjectableService';
+  public persistentData = 'I’m a variable inside a singleton';
 
   constructor() {}
 }
