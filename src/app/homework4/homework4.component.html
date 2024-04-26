@@ -1,0 +1,20 @@
+<h1>Event binding</h1>
+<p>- Crear un botón el cual al hacer click, abra una alerta de javascript con el texto: “I was triggered by an event”
+</p>
+
+<button (click)="onClick()">Click me</button>
+
+<h2>One way data binding</h2>
+<p>- Crear una variable string con el texto “Hello World”</p>
+<p>- Crear un elemento input de tipo “text” y asignarle la variable de tal forma que cuando renderice se refleje el
+    texto “Hello World”</p>
+<input type="text" [value]="msg1" />
+
+
+<h2>Two way data binding</h2>
+<p>- Crea un elemento span que muestre el contenido de la variable que se creó en el ejercicio anterior.</p>
+<p>- Al elemento input que se creó en el ejercicio anterior, agregarle la sintaxis necesaria para que al teclear en el
+    input, se refleje el cambio en la variable que también debe verse en el elemento span.</p>
+
+<p>{{msg2}}</p>
+<p>Change me here: <input type="text" [(ngModel)]=msg2 /></p>
