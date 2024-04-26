@@ -1,0 +1,17 @@
+<div>
+    <h2>using NgClass</h2>
+    <button type="button" (click)="active = !active">Toggle Active</button>
+    <div>
+        <span [ngClass]="{'redText': active}">Hello</span>
+        <p>active: {{active}}</p>
+    </div>
+</div>
+
+<div>
+    <h2>using NgStyle</h2>
+    <button type="button" (click)="activeByStyle = !activeByStyle">Toggle Active</button>
+    <div>
+        <span [ngStyle]="{'color': activeByStyle ? 'red' : 'black'}">Hello</span>
+        <p>active: {{activeByStyle}}</p>
+    </div>
+</div>
