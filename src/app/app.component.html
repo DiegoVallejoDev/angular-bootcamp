@@ -1,8 +1,9 @@
-<style>
+<h1>Routing header</h1>
+<p><a routerLink="/homework9">Homework9 simple</a></p>
+<p><a routerLink="/homework9lazy">Homework9 lazy</a></p>
+<p><a routerLink="/homework9/{{slug}}">homework9 slug : {{slug}}</a></p>
 
-</style>
-
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<app-homework8></app-homework8>
-
-<!--router-outlet></router-outlet-->
+<p>change slug</p>
+<input type="text" [(ngModel)]="slug">
+<hr>
+<router-outlet> </router-outlet>

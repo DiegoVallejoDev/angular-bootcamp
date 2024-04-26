@@ -20,6 +20,8 @@ import { Homework8Component } from './homework8/homework8.component';
 import { Homework8DialogComponent } from './homework8-dialog/homework8-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { Homework9Component } from './homework9/homework9.component';
+import { Homework9SlugComponent } from './homework9-slug/homework9-slug.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     CurrencyPipe,
     Homework8Component,
     Homework8DialogComponent,
+    Homework9Component,
+    Homework9SlugComponent,
   ],
   imports: [
     BrowserModule,
