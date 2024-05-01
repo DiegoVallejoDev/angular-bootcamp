@@ -1,0 +1,10 @@
+<div>
+    <label for="search-box">Search:</label>
+    <input type="text" id="search-box" [(ngModel)]="searchKeyword" />
+</div>
+
+<ul>
+    <li *ngFor="let item of filteredItems">
+        {{ item.title }} - {{ item.description }}
+    </li>
+</ul>

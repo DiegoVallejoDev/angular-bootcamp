@@ -1,0 +1,41 @@
+<h2>Super Shop!</h2>
+
+<app-item-form></app-item-form>
+<h3>select currency</h3>
+<select [(ngModel)]="currency">
+  <option value="usd">USD</option>
+  <option value="eur">EUR</option>
+  <option value="gbp">GBP</option>
+</select>
+
+
+<h3>
+  <input type="checkbox" [(ngModel)]="onlyDiscounts" (change)="onFilterChange()" />
+  Only discounts
+</h3>
+
+<h2>items</h2>
+
+<app-item-filter></app-item-filter>
+
+<div *ngFor="let item of items| pagination: currentPage: itemsPerPage: this.filterItems">
+  <div style="display: flex;">
+    <img [src]="item.photos[0]" alt="item.title" style="height: 200px; width: 200px; margin: 1em;" />
+    <div>
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.description }}</p>
+      <p>{{ item.prices | currency: currency}} <span
+          style="color:white; background: rgb(252, 79, 79); padding: 0 .5em ; border-top-left-radius: 1em; border-bottom-left-radius: 1em;"
+          *ngIf="item.offerDiscount">{{
+          item.offerDiscount}}% off </span>
+      </p>
+
+      <p><a [routerLink]="['/shop', item.id, {currency}]">see more</a></p>
+    </div>
+
+  </div>
+  <hr>
+</div>
+<app-pagination [items]="items" [currentPage]="currentPage" [itemsPerPage]="itemsPerPage"
+  (pageChange)="onPageChange($event)">
+</app-pagination>
