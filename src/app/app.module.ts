@@ -9,7 +9,7 @@ import { Homework2Component } from './homework2/homework2.component';
 import { CapitalizeDirective } from './capitalize.directive';
 import { Homework3Component } from './homework3/homework3.component';
 import { Homework4Component } from './homework4/homework4.component';
-import { MyFirstModuleModule } from './my-first-module/my-first-module.module';
+import { MyFirstModuleModule } from './myFirstModule/my-first.module';
 
 @NgModule({
   declarations: [
