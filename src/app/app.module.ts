@@ -9,12 +9,13 @@ import { Homework2Component } from './homework2/homework2.component';
 import { CapitalizeDirective } from './capitalize.directive';
 import { Homework3Component } from './homework3/homework3.component';
 import { Homework4Component } from './homework4/homework4.component';
-import { MyFirstModuleModule } from './my-first-module/my-first-module.module';
+import { MyFirstModuleModule } from './myFirstModule/my-first.module';
 import { RootInjectableService } from './root-injectable.service';
 import { Homework6Component } from './homework6/homework6.component';
 import { Homework7Component } from './homework7/homework7.component';
 import { CapitalizePipe } from './capitalize.pipe';
 import { CurrencyPipe } from './currency.pipe';
+
 
 @NgModule({
   declarations: [
