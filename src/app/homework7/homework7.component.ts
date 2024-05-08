@@ -5,11 +5,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './homework7.component.html',
   styleUrls: ['./homework7.component.css'],
 })
-export class Homework7Component implements OnInit {
-  public brand = 'jordan';
-  public price = 420.699;
-
-  constructor() {}
-
-  ngOnInit(): void {}
+export class Homework7Component {
+  public brand: string = 'jordan';
+  public price: number = 420.699;
+  public selectedCurrency: string = 'MXN';
 }

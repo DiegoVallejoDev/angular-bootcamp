@@ -14,7 +14,7 @@ import { RootInjectableService } from './root-injectable.service';
 import { Homework6Component } from './homework6/homework6.component';
 import { Homework7Component } from './homework7/homework7.component';
 import { CapitalizePipe } from './capitalize.pipe';
-import { CurrencyPipe } from './currency.pipe';
+
 
 
 @NgModule({
@@ -28,7 +28,6 @@ import { CurrencyPipe } from './currency.pipe';
     Homework6Component,
     Homework7Component,
     CapitalizePipe,
-    CurrencyPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, MyFirstModuleModule],
   providers: [RootInjectableService],
