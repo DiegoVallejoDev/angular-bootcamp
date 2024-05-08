@@ -5,11 +5,5 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './homework9-lazy.component.html',
   styleUrls: ['./homework9-lazy.component.css']
 })
-export class Homework9LazyComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class Homework9LazyComponent{
 }

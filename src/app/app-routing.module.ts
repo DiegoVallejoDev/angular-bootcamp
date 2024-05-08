@@ -10,17 +10,11 @@ const routes: Routes = [
   },
   {
     path: 'homework9lazy',
-    loadChildren: () =>
-      import('./lazy/lazy.module').then((m) => m.LazyModule)
+    loadChildren: () => import('./lazy/lazy.module').then((m) => m.LazyModule),
   },
   {
     path: 'homework9/:slug',
-    children: [
-      {
-        path: ':slug',
-        component: Homework9SlugComponent,
-      },
-    ],
+    component: Homework9SlugComponent,
   },
 ];
 
