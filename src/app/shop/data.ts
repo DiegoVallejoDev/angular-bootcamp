@@ -1,4 +1,4 @@
-export interface prices {
+export interface IPrices {
   usd: number;
   eur: number;
   gbp: number;
@@ -6,7 +6,7 @@ export interface prices {
 export interface Item {
   id: string;
   title: string;
-  prices: prices;
+  prices: IPrices;
   photos: string[];
   description: string;
   offerDiscount?: number;

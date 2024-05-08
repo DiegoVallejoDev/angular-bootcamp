@@ -1,7 +1,7 @@
 <p><a [routerLink]="['/shop']"><- go back</a></p>
 
 <h3>select currency</h3>
-<select [(ngModel)]="currency">
+<select [(ngModel)]="selectedCurrency">
     <option value="usd">USD</option>
     <option value="eur">EUR</option>
     <option value="gbp">GBP</option>
@@ -11,21 +11,21 @@
     <h3>{{ item.title }} details</h3>
     <p>{{ item.description }}</p>
     <h2>
-        <span [ngClass]="{ 'striked': item.offerDiscount }"> {{ item.prices | currency: currency }}</span>
+        <span [ngClass]="{ 'striked': item.offerDiscount }"> {{ item.prices[selectedCurrency] | currency:
+            selectedCurrency: true }}</span>
         <span *ngIf="item.offerDiscount">
-            <span
-                style="color:white; background: rgb(252, 79, 79); padding: 0 .5em ; border-top-left-radius: 1em; border-bottom-left-radius: 1em; margin: 0 .3em 0; "
-                *ngIf="item.offerDiscount">
+            <span class="discount-tag" *ngIf="item.offerDiscount">
                 {{ item.offerDiscount }}% off
             </span>
-            <span style="font-size: 1.5em;">{{ calcDiscount(item.prices, item.offerDiscount) | currency: currency
+            <span class="font-1.5">{{ calcDiscount(item.prices, item.offerDiscount)[selectedCurrency] | currency:
+                selectedCurrency: true
                 }}</span>
         </span>
     </h2>
 
 
-    <img *ngFor="let photo of item.photos" [src]="photo" alt="item.title"
-        style="width: 100px; height: 100px; margin-right: 1em; margin-bottom: 1em; display: inline-block; border: 1px solid #ccc; border-radius: 15px; padding: 5px; box-shadow: 0 0 5px #ccc; transition: box-shadow 0.3s; cursor: pointer;"
+    <img *ngFor="let photo of item.photos" [src]="photo" alt="item.title" class="thumb"
+        ngClass="{ 'selected': item.photos.indexOf(photo) === selectedPhoto }"
         (click)="selectedPhoto = item.photos.indexOf(photo)">
     <img [src]="item.photos[selectedPhoto]" alt="item.title">
 </div>

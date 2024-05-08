@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CurrencyPipe } from '../currency.pipe';
 import { ItemsService } from '../items.service';
 import { Item } from '../data';
-import { PaginationComponent } from '../pagination/pagination.component';
 
 @Component({
   selector: 'app-catalog',
@@ -11,11 +9,10 @@ import { PaginationComponent } from '../pagination/pagination.component';
 })
 export class CatalogComponent implements OnInit {
   protected items: Item[] = [];
-  protected currency: 'usd' | 'eur' | 'gbp' = 'usd';
+  protected selectedCurrency: 'usd' | 'eur' | 'gbp' = 'usd';
   protected currentPage: number = 1;
   protected itemsPerPage: number = 5;
   protected onlyDiscounts = false;
-
 
   filterItems = (item: Item) => {
     if (!this.onlyDiscounts) {

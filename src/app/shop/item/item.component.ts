@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { prices } from '../data';
-import { CurrencyPipe } from '../currency.pipe';
+import { IPrices } from '../data';
 import { ItemsService } from '../items.service';
 import { Item } from '../data';
 
@@ -12,18 +11,20 @@ import { Item } from '../data';
 })
 export class ItemComponent implements OnInit {
   //item from router slug
-  protected error = false;
-  protected slug = this.route.snapshot.paramMap.get('item'); //ie /item/1
+  protected error:boolean = false;
+  protected itemId: string | null = null;
   protected item: Item | undefined;
-  protected currency: keyof prices = 'usd';
-  protected selectedPhoto = 0;
+  protected selectedCurrency: keyof IPrices = 'usd';
+  protected selectedPhoto:number = 0;
 
   constructor(
     private route: ActivatedRoute,
     private ItemsService: ItemsService
-  ) {}
+  ) {
+    this.itemId = this.route.snapshot.paramMap.get('item'); //ie /item/1
+  }
 
-  calcDiscount(prices: prices, discount: number): prices {
+  calcDiscount(prices: IPrices, discount: number): IPrices {
     return {
       usd: prices.usd - discount,
       eur: prices.eur - discount,
@@ -32,7 +33,7 @@ export class ItemComponent implements OnInit {
   }
   ngOnInit(): void {
     this.item = this.ItemsService.getItems().find(
-      (item) => item.id === this.slug
+      (item) => item.id === this.itemId
     );
 
     if (!this.item) {
@@ -40,8 +41,8 @@ export class ItemComponent implements OnInit {
       this.error = true;
     }
     //currency from get param or default to usd
-    this.currency =
-      (this.route.snapshot.queryParamMap.get('currency') as keyof prices) ||
+    this.selectedCurrency =
+      (this.route.snapshot.queryParamMap.get('currency') as keyof IPrices) ||
       'usd';
   }
 }

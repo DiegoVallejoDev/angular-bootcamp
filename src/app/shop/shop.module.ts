@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { ShopRoutingModule } from './shop-routing.module';
 import { CatalogComponent } from './catalog/catalog.component';
 import { ItemComponent } from './item/item.component';
-import { CurrencyPipe } from './currency.pipe';
 import { PaginationPipe } from './pagination.pipe';
 import { PaginationComponent } from './pagination/pagination.component';
 import { ItemFormComponent } from './item-form/item-form.component';
@@ -16,7 +15,6 @@ import { ItemFilterComponent } from './item-filter/item-filter.component';
   declarations: [
     CatalogComponent,
     ItemComponent,
-    CurrencyPipe,
     PaginationPipe,
     PaginationComponent,
     ItemFormComponent,

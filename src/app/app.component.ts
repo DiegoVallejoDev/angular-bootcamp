@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { Routes } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +7,5 @@ import { Routes } from '@angular/router';
 })
 export class AppComponent {
   title = 'angular-bootcamp';
-  constructor(private router: Router) {}
+  constructor() {}
 }

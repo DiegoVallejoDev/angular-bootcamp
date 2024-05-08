@@ -1,6 +1,6 @@
 <button id="open-dialog" (click)="openDialog()">Add a new Item</button>
 
-<dialog id="dialog" [open]="ShowDialog">
+<dialog id="dialog" [open]="showDialog">
     <header>Add a new Item</header>
     <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
         <div>
@@ -44,7 +44,6 @@
             <input type="number" id="offerDiscount" formControlName="offerDiscount">
         </div>
         <button type="submit">Create Item</button>
-        <button type="button" style="color: white; background: rgb(272, 75, 75);"
-            (click)="closeDialog()">Cancel</button>
+        <button type="button" class="cancel" (click)="closeDialog()">Cancel</button>
     </form>
 </dialog>

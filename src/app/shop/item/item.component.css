@@ -1,4 +1,36 @@
 .striked {
-    text-decoration: line-through;
-    color: rgb(252, 79, 79);
+  text-decoration: line-through;
+  color: rgb(252, 79, 79);
+}
+
+.discount-tag {
+  color: white;
+  background: rgb(252, 79, 79);
+  padding: 0 0.5em;
+  border-top-left-radius: 1em;
+  border-bottom-left-radius: 1em;
+  margin: 0 0.3em 0;
+}
+
+.thumb {
+  width: 100px;
+  height: 100px;
+  margin-right: 1em;
+  margin-bottom: 1em;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  padding: 5px;
+  box-shadow: 0 0 5px #ccc;
+  transition: box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.selected {
+  box-shadow: 0 0 10px #2f97dd;
+  border: 1px solid #2f97dd;
+}
+
+.font-1.5 {
+  font-size: 1.5em;
 }

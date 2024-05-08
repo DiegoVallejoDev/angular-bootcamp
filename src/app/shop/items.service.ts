@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
-import { items, Item, prices } from './data';
+import { items, Item, IPrices } from './data';
 @Injectable({
   providedIn: 'root',
 })
 export class ItemsService {
-  protected items: Item[];
-  constructor() {
-    this.items = items;
-  }
+  protected items: Item[] = items;
+
   getItems(filtering = (item: Item) => true): Item[] {
     return this.items.filter(filtering);
   }
@@ -19,12 +17,11 @@ export class ItemsService {
   addItem(newItem: {
     id?: string;
     title: string;
-    prices: prices;
+    prices: IPrices;
     photos: string[];
     description: string;
     offerDiscount?: number;
   }): void {
-
     newItem.id = (this.items.length + 1).toString();
     this.items.push(newItem as Item);
   }

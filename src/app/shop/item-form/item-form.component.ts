@@ -15,10 +15,10 @@ import { Item } from '../data';
   styleUrls: ['./item-form.component.css'],
 })
 export class ItemFormComponent {
-  protected ShowDialog = false;
+  protected showDialog = false;
 
   itemForm: FormGroup;
-  photos: any;
+  photos: Array<string> = [];
 
   constructor(private fb: FormBuilder, private itemsService: ItemsService) {
     this.itemForm = this.fb.group({
@@ -60,21 +60,17 @@ export class ItemFormComponent {
       // Reset form
       this.itemForm.reset();
       this.photosArray.clear();
-      this.ShowDialog = false;
-      
+      this.showDialog = false;
     } else {
       alert('Please fill in all required fields');
     }
   }
   openDialog() {
-    this.ShowDialog = true;
+    this.showDialog = true;
   }
   closeDialog() {
-    this.ShowDialog = false;
+    this.showDialog = false;
     // Reset form
     this.itemForm.reset();
-  }
-  submitDialog(data: any) {
-    this.ShowDialog = false;
   }
 }
