@@ -19,6 +19,7 @@ import { Homework8Component } from './homework8/homework8.component';
 import { Homework8DialogComponent } from './homework8-dialog/homework8-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     BrowserAnimationsModule,
     MatDialogModule,
     MatFormFieldModule,
+    MatInputModule,
   ],
   providers: [RootInjectableService],
   bootstrap: [AppComponent],
