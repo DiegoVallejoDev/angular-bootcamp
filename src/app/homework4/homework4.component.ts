@@ -5,13 +5,11 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './homework4.component.html',
   styleUrls: ['./homework4.component.css'],
 })
-export class Homework4Component implements OnInit {
+export class Homework4Component {
   onClick() {
     alert('I was triggered by an event');
   }
 
-  public msg1 = 'Hello World';
-  public msg2 = 'Hello world';
-  constructor() {}
-  ngOnInit(): void {}
+  public msg1: string = 'Hello World';
+  public msg2: string = 'Hello world';
 }

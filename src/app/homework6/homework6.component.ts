@@ -6,10 +6,9 @@ import { RootInjectableService } from '../root-injectable.service';
   templateUrl: './homework6.component.html',
   styleUrls: ['./homework6.component.css'],
 })
-export class Homework6Component implements OnInit {
-  constructor(
-    protected readonly RootInjectableService: RootInjectableService
-  ) {}
-
-  ngOnInit(): void {}
+export class Homework6Component {
+  protected fromRootInjectableService: string;
+  constructor(protected readonly RootInjectableService: RootInjectableService) {
+    this.fromRootInjectableService = RootInjectableService.getPersistentData();
+  }
 }

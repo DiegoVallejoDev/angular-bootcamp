@@ -9,17 +9,17 @@ import { Homework2Component } from './homework2/homework2.component';
 import { CapitalizeDirective } from './capitalize.directive';
 import { Homework3Component } from './homework3/homework3.component';
 import { Homework4Component } from './homework4/homework4.component';
-import { MyFirstModuleModule } from './my-first-module/my-first-module.module';
+import { MyFirstModuleModule } from './myFirstModule/my-first.module';
 import { RootInjectableService } from './root-injectable.service';
 import { Homework6Component } from './homework6/homework6.component';
 import { Homework7Component } from './homework7/homework7.component';
 import { CapitalizePipe } from './capitalize.pipe';
-import { CurrencyPipe } from './currency.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Homework8Component } from './homework8/homework8.component';
 import { Homework8DialogComponent } from './homework8-dialog/homework8-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { Homework9Component } from './homework9/homework9.component';
 import { Homework9SlugComponent } from './homework9-slug/homework9-slug.component';
 
@@ -34,7 +34,6 @@ import { Homework9SlugComponent } from './homework9-slug/homework9-slug.componen
     Homework6Component,
     Homework7Component,
     CapitalizePipe,
-    CurrencyPipe,
     Homework8Component,
     Homework8DialogComponent,
     Homework9Component,
@@ -48,6 +47,7 @@ import { Homework9SlugComponent } from './homework9-slug/homework9-slug.componen
     BrowserAnimationsModule,
     MatDialogModule,
     MatFormFieldModule,
+    MatInputModule,
   ],
   providers: [RootInjectableService],
   bootstrap: [AppComponent],
