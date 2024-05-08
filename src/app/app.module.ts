@@ -12,6 +12,9 @@ import { Homework4Component } from './homework4/homework4.component';
 import { MyFirstModuleModule } from './myFirstModule/my-first.module';
 import { RootInjectableService } from './root-injectable.service';
 import { Homework6Component } from './homework6/homework6.component';
+import { Homework7Component } from './homework7/homework7.component';
+import { CapitalizePipe } from './capitalize.pipe';
+
 
 
 @NgModule({
@@ -23,6 +26,8 @@ import { Homework6Component } from './homework6/homework6.component';
     Homework3Component,
     Homework4Component,
     Homework6Component,
+    Homework7Component,
+    CapitalizePipe,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, MyFirstModuleModule],
   providers: [RootInjectableService],
