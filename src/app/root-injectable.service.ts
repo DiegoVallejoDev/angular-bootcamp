@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class RootInjectableService {
-  public persistentData = 'I’m a variable inside a singleton';
-
+  private msg: string = 'I’m a variable inside a singleton';
+  public getPersistentData(): string {
+    return this.msg;
+  }
   constructor() {}
 }
