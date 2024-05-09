@@ -7,5 +7,4 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Homework2Component {
   public letters: string[] = ['A', 'B', 'C'];
-  constructor() {}
 }

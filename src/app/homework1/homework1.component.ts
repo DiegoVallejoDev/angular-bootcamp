@@ -8,5 +8,4 @@ import { Component, OnInit } from '@angular/core';
 export class Homework1Component {
   public active: boolean = false;
   public activeByStyle: boolean = false;
-  constructor() {}
 }

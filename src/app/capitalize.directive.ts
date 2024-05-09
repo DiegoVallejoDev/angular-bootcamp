@@ -8,8 +8,8 @@ export class CapitalizeDirective {
     const value: string = element.nativeElement.innerText;
     if(value){
       const newValue = value.split(" ")
-      .map(e => e.charAt(0).toUpperCase() + e.slice(1).toLowerCase())
-      .join(" ")
+        .map(e => e.charAt(0).toUpperCase() + e.slice(1).toLowerCase())
+        .join(" ");
     element.nativeElement.innerText = newValue;
     }
   }
