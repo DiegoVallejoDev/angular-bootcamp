@@ -5,10 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './homework1.component.html',
   styleUrls: ['./homework1.component.css'],
 })
-export class Homework1Component implements OnInit {
+export class Homework1Component {
   public active: boolean = false;
   public activeByStyle: boolean = false;
-  constructor() {}
-
-  ngOnInit(): void {}
 }
