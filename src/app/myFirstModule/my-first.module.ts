@@ -14,4 +14,4 @@ const routes = [
   declarations: [MyFirstComponent],
   imports: [CommonModule, RouterModule.forRoot(routes)],
 })
-export class MyFirstModuleModule {}
+export class MyFirstModule {}

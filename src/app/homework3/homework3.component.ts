@@ -8,5 +8,5 @@ import { Component, OnInit } from '@angular/core';
 export class Homework3Component {
   public text: string =
     'pablito codeo un bugsito en la repo de un bootcampsito';
-  constructor() {}
+
 }

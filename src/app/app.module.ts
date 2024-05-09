@@ -9,22 +9,21 @@ import { Homework2Component } from './homework2/homework2.component';
 import { CapitalizeDirective } from './capitalize.directive';
 import { Homework3Component } from './homework3/homework3.component';
 import { Homework4Component } from './homework4/homework4.component';
-import { MyFirstModuleModule } from './myFirstModule/my-first.module';
-import { RootInjectableService } from './root-injectable.service';
 import { Homework6Component } from './homework6/homework6.component';
-
+import { MyFirstModule } from './myFirstModule/my-first.module';
+import { RootInjectableService } from './root-injectable.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     Homework1Component,
     Homework2Component,
-    CapitalizeDirective,
     Homework3Component,
     Homework4Component,
     Homework6Component,
+    CapitalizeDirective,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, MyFirstModuleModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, MyFirstModule],
   providers: [RootInjectableService],
   bootstrap: [AppComponent],
 })
