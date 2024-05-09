@@ -6,20 +6,25 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Homework1Component } from './homework1/homework1.component';
 import { Homework2Component } from './homework2/homework2.component';
-import { CapitalizeDirective } from './capitalize.directive';
 import { Homework3Component } from './homework3/homework3.component';
 import { Homework4Component } from './homework4/homework4.component';
-import { MyFirstModuleModule } from './myFirstModule/my-first.module';
-import { RootInjectableService } from './root-injectable.service';
 import { Homework6Component } from './homework6/homework6.component';
 import { Homework7Component } from './homework7/homework7.component';
-import { CapitalizePipe } from './capitalize.pipe';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Homework8Component } from './homework8/homework8.component';
 import { Homework8DialogComponent } from './homework8-dialog/homework8-dialog.component';
+
+import { CapitalizeDirective } from './capitalize.directive';
+import { CapitalizePipe } from './capitalize.pipe';
+
+import { MyFirstModuleModule } from './myFirstModule/my-first.module';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { RootInjectableService } from './root-injectable.service';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -41,9 +46,11 @@ import { MatInputModule } from '@angular/material/input';
     FormsModule,
     MyFirstModuleModule,
     BrowserAnimationsModule,
+    MatButtonModule,
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSlideToggleModule,
   ],
   providers: [RootInjectableService],
   bootstrap: [AppComponent],
