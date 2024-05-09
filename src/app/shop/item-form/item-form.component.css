@@ -8,3 +8,8 @@ dialog {
 .cancel{
     color: white; background: rgb(272, 75, 75);
 }
+
+.error{
+    color: rgb(272, 75, 75);
+    font-weight: bold;
+}

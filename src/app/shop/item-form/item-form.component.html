@@ -3,7 +3,13 @@
 <dialog id="dialog" [open]="showDialog">
     <header>Add a new Item</header>
     <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+        <span class="error" *ngIf="itemForm.invalid && itemForm.touched">Please fill in all the fields</span>
+        <ul class="error">
+            <li *ngFor="let error of errorList">{{error}}</li>
+        </ul>
         <div>
+            <span class="error" *ngIF="itemForm.get('title').invalid && itemForm.get('title').touched">Title is required
+                and should be unique</span>
             <label for="title">Title:</label>
             <input type="text" id="title" formControlName="title" required>
         </div>

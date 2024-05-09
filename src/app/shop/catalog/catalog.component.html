@@ -1,8 +1,6 @@
 <h2>Super Shop!</h2>
 
-<app-item-form
-  (itemAdded)="onItemAdded($event)"
-></app-item-form>
+<app-item-form (onItemAdded)="onItemAdded($event)"></app-item-form>
 <h3>select currency</h3>
 <select [(ngModel)]="selectedCurrency">
   <option value="usd">USD</option>
@@ -11,14 +9,16 @@
 </select>
 
 
-<h3>
+<h4>Search  
+  <input type="text" [(ngModel)]="filterText" (input)="onFilterChange()" placeholder="search items" />
   <input type="checkbox" [(ngModel)]="onlyDiscounts" (change)="onFilterChange()" />
   Only discounts
-</h3>
+</h4>
+
+
 
 <h2>items</h2>
-
-<app-item-filter></app-item-filter>
+<span *ngIf="filterText">filtered by: {{ filterText }}</span>
 
 <div *ngFor="let item of items| pagination: currentPage: itemsPerPage: filterItems">
   <div class="thumb-list">
@@ -26,7 +26,8 @@
     <div>
       <h3>{{ item.title }}</h3>
       <p>{{ item.description }}</p>
-      <p>{{ item.prices[selectedCurrency] | currency: selectedCurrency: true }} <span class="discount-tag"
+      <p>{{ item.prices[selectedCurrency] | currency: selectedCurrency: true }} 
+        <span class="discount-tag"
           *ngIf="item.offerDiscount">{{
           item.offerDiscount}}% off </span>
       </p>

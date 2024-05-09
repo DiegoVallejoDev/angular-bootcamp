@@ -13,12 +13,19 @@ export class CatalogComponent implements OnInit {
   protected currentPage: number = 1;
   protected itemsPerPage: number = 5;
   protected onlyDiscounts = false;
+  protected filterText = '';
 
-  filterItems = (item: Item) => {
-    if (!this.onlyDiscounts) {
-      return true;
+  filterItems = (item: Item): boolean => {
+    //onlyDiscounts and filterText
+    //if item.offerDiscount is different to this.onlyDiscounts then return false
+    if (this.onlyDiscounts && this.onlyDiscounts !== !!item.offerDiscount) {
+      return false;
     }
-    return item.offerDiscount != null;
+    //if filterText is not included in item.title then return false
+    if (!item.title.toLowerCase().includes(this.filterText.toLowerCase())) {
+      return false;
+    }
+    return true;
   };
 
   onPageChange(pageNumber: number): void {
@@ -27,7 +34,8 @@ export class CatalogComponent implements OnInit {
 
   constructor(private ItemsService: ItemsService) {}
 
-  onItemAdded(_: unknown): void {
+  onItemAdded(newItem: Item): void {
+    this.ItemsService.addItem(newItem);
     this.items = this.ItemsService.getItems(this.filterItems);
   }
 
