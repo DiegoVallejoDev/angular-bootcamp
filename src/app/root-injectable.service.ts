@@ -6,5 +6,4 @@ export class RootInjectableService {
   public getPersistentData(): string {
     return this.msg;
   }
-  constructor() {}
 }
