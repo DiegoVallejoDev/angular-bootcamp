@@ -9,7 +9,7 @@ import { Homework2Component } from './homework2/homework2.component';
 import { CapitalizeDirective } from './capitalize.directive';
 import { Homework3Component } from './homework3/homework3.component';
 import { Homework4Component } from './homework4/homework4.component';
-import { MyFirstModuleModule } from './myFirstModule/my-first.module';
+import { MyFirstModule } from './myFirstModule/my-first.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,7 @@ import { MyFirstModuleModule } from './myFirstModule/my-first.module';
     Homework3Component,
     Homework4Component,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, MyFirstModuleModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, MyFirstModule],
   providers: [],
   bootstrap: [AppComponent],
 })
