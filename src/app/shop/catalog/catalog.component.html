@@ -1,6 +1,8 @@
 <h2>Super Shop!</h2>
 
-<app-item-form></app-item-form>
+<app-item-form
+  (itemAdded)="onItemAdded($event)"
+></app-item-form>
 <h3>select currency</h3>
 <select [(ngModel)]="selectedCurrency">
   <option value="usd">USD</option>

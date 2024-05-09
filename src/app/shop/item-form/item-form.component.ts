@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -16,7 +16,7 @@ import { Item } from '../data';
 })
 export class ItemFormComponent {
   protected showDialog = false;
-
+  @Output() newItemEvent = new EventEmitter<string>();
   itemForm: FormGroup;
   photos: Array<string> = [];
 
@@ -61,6 +61,7 @@ export class ItemFormComponent {
       this.itemForm.reset();
       this.photosArray.clear();
       this.showDialog = false;
+      this.newItemEvent.emit('New item added');
     } else {
       alert('Please fill in all required fields');
     }

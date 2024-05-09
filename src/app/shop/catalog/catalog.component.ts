@@ -27,6 +27,10 @@ export class CatalogComponent implements OnInit {
 
   constructor(private ItemsService: ItemsService) {}
 
+  onItemAdded(_: unknown): void {
+    this.items = this.ItemsService.getItems(this.filterItems);
+  }
+
   ngOnInit(): void {
     this.items = this.ItemsService.getItems(this.filterItems);
   }

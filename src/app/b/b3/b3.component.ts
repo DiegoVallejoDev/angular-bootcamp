@@ -5,11 +5,5 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './b3.component.html',
   styleUrls: ['./b3.component.css']
 })
-export class B3Component implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class B3Component {
 }
