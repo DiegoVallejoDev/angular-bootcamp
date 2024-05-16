@@ -25,10 +25,11 @@ export class ItemComponent implements OnInit {
   }
 
   calcDiscount(prices: IPrices, discount: number): IPrices {
+    const discountPercentage = discount / 100;
     return {
-      usd: prices.usd - discount,
-      eur: prices.eur - discount,
-      gbp: prices.gbp - discount,
+      usd: prices.usd * (1 - discountPercentage),
+      eur: prices.eur * (1 - discountPercentage),
+      gbp: prices.gbp * (1 - discountPercentage),
     };
   }
   ngOnInit(): void {
