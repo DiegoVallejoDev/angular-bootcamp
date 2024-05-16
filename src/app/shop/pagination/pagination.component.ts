@@ -12,19 +12,15 @@ export class PaginationComponent {
   @Input() items: IItem[] = [];
   @Input() currentPage: number = 1;
   @Input() itemsPerPage: number = 5;
-
   
-
-  // Logic for page change event
-  @Output() pageChange = new EventEmitter<number>();
+  @Output() pageChange = new EventEmitter<number>(); // Logic for page change event
   
-  protected pages: number[] = this.getPages() // to prevent calling the function in ngFor as sugested 
-                                              // and also dont write the whole logic in the template
+  protected pages: number[] = [];
 
   getTotalPages(): number {
     return Math.ceil(this.items.length / this.itemsPerPage);
   }
-
+  
   onPageChange(page: number): void {
     this.pageChange.emit(page);
   }
@@ -33,5 +29,7 @@ export class PaginationComponent {
     return new Array(this.getTotalPages()).fill(0).map((_, index) => index + 1);
   }
 
-  constructor(private paginationPipe: PaginationPipe) {}
+  constructor(private paginationPipe: PaginationPipe) {
+    this.pages = this.getPages();
+  }
 }

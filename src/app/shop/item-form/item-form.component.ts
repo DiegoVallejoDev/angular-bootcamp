@@ -34,11 +34,15 @@ export class ItemFormComponent {
         ],
       ],
       prices: this.fb.group({
-        usd: ['', Validators.required],
-        eur: ['', Validators.required],
-        gbp: ['', Validators.required],
+        usd: ['', Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/)],
+        eur: ['', Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/)],
+        gbp: ['', Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/)],
       }),
-      photos: this.fb.array([]),
+      photos: this.fb.array([
+        this.fb.control('', [Validators.required,
+          Validators.pattern(/^https?:\/\/(?:[a-z0-9\-]+\.)+[a-z]{2,6}(?:\/[^/#?]+)+\.(?:jpg|jpeg|png|gif|webp|avif)$/i
+          )]),
+      ]),
       description: ['', Validators.required],
       offerDiscount: [
         null, // Optional field, starts empty
@@ -68,7 +72,14 @@ export class ItemFormComponent {
   }
 
   addPhoto(): void {
-    this.photosArray.push(new FormControl('', Validators.required));
+    this.photosArray.push(
+      new FormControl('', [
+        Validators.required,
+        Validators.pattern(
+          /^https?:\/\/(?:[a-z0-9\-]+\.)+[a-z]{2,6}(?:\/[^/#?]+)+\.(?:jpg|jpeg|png|gif|webp|avif)$/i
+        ),
+      ])
+    );
   }
 
   removePhoto(index: number): void {
