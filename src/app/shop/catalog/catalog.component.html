@@ -1,0 +1,29 @@
+<h2>Super Shop!</h2>
+
+<app-item-form (onItemAdded)="onItemAdded($event)"></app-item-form>
+<h3>select currency</h3>
+<select [(ngModel)]="selectedCurrency">
+  <option value="usd">USD</option>
+  <option value="eur">EUR</option>
+  <option value="gbp">GBP</option>
+</select>
+
+
+<h4>Search  
+  <input type="text" [(ngModel)]="filterText" (input)="onFilterChange()" placeholder="search items" />
+  <input type="checkbox" [(ngModel)]="onlyDiscounts" (change)="onFilterChange()" />
+  Only discounts
+</h4>
+
+
+
+<h2>items</h2>
+<span *ngIf="filterText">filtered by: {{ filterText }}</span>
+
+<div *ngFor="let item of items| pagination: currentPage: itemsPerPage: filterItems">
+  <app-item-preview [item]="item" [selectedCurrency]="selectedCurrency"></app-item-preview>
+  <hr>
+</div>
+<app-pagination [items]="items" [currentPage]="currentPage" [itemsPerPage]="itemsPerPage"
+  (pageChange)="onPageChange($event)">
+</app-pagination>

@@ -1,0 +1,55 @@
+<button id="open-dialog" (click)="openDialog()">Add a new Item</button>
+
+<dialog id="dialog" [open]="showDialog">
+    <header>Add a new Item</header>
+    <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+        <span class="error" *ngIf="itemForm.invalid && itemForm.touched">Please fill in all the fields</span>
+        <ul class="error">
+            <li *ngFor="let error of errorList">{{error}}</li>
+        </ul>
+        <div>
+            <span class="error" *ngIF="itemForm.get('title').invalid && itemForm.get('title').touched">Title is required
+                and should be unique</span>
+            <label for="title">Title:</label>
+            <input type="text" id="title" formControlName="title" required>
+        </div>
+        <p>pricing</p>
+        <div formGroupName="prices">
+            <div>
+                <label for="usd">USD:</label>
+                <input type="number" id="usd" formControlName="usd" required>
+            </div>
+            <div>
+                <label for="eur">EUR:</label>
+                <input type="number" id="eur" formControlName="eur" required>
+            </div>
+            <div>
+                <label for="gbp">GBP:</label>
+                <input type="number" id="gbp" formControlName="gbp" required>
+            </div>
+        </div>
+        <hr>
+
+        <div formArrayName="photos">
+            <div *ngFor="let photoControl of photosArray.controls; let i = index">
+                <label for="photo{{i}}">Photo {{i + 1}}:</label>
+                <input type="text" id="photo{{i}}" [formControlName]="i" required>
+                <button type="button" (click)="removePhoto(i)">Remove Photo</button>
+            </div>
+            <button type="button" (click)="addPhoto()">Add Photo</button>
+        </div>
+
+
+        <hr>
+        <div>
+            <label for="description">Description:</label>
+            <textarea id="description" formControlName="description" required></textarea>
+        </div>
+        <div>
+            <label for="offerDiscount">Offer Discount:</label>
+            <input type="number" id="offerDiscount" formControlName="offerDiscount">
+        </div>
+        <button type="submit">Create Item</button>
+        <button type="button" class="cancel" (click)="closeDialog()">Cancel</button>
+    </form>
+</dialog>

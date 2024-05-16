@@ -1,0 +1,35 @@
+<p><a [routerLink]="['/shop']"><- go back</a></p>
+
+<h3>select currency</h3>
+<select [(ngModel)]="selectedCurrency">
+    <option value="usd">USD</option>
+    <option value="eur">EUR</option>
+    <option value="gbp">GBP</option>
+</select>
+
+<div *ngIf="item">
+    <h3>{{ item.title }} details</h3>
+    <p>{{ item.description }}</p>
+    <h2>
+        <span [ngClass]="{ 'striked': item.offerDiscount }"> {{ item.prices[selectedCurrency] | currency:
+            selectedCurrency.toUpperCase(): true }}</span>
+        <span *ngIf="item.offerDiscount">
+            <span class="discount-tag" *ngIf="item.offerDiscount">
+                {{ item.offerDiscount }}% off
+            </span>
+            <span class="font-1-5">{{ calcDiscount(item.prices, item.offerDiscount)[selectedCurrency] | currency:
+                selectedCurrency.toUpperCase()
+                }}</span>
+        </span>
+    </h2>
+
+
+    <img *ngFor="let photo of item.photos" [src]="photo" alt="item.title" class="thumb"
+        ngClass="{ 'selected': item.photos.indexOf(photo) === selectedPhoto }"
+        (click)="selectedPhoto = item.photos.indexOf(photo)">
+    <img [src]="item.photos[selectedPhoto]" alt="item.title">
+</div>
+<div *ngIf="!item">
+    <h1>Error: invalid item id<p><a [routerLink]="['/shop']"><- go back</a></p>
+    </h1>
+</div>

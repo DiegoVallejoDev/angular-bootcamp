@@ -1,0 +1,14 @@
+<div class="thumb-list">
+    <img [src]="item.photos[0]" alt="item.title" class="thumb-preview" />
+    <div>
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.description }}</p>
+        <p>{{ item.prices[selectedCurrency] | currency: selectedCurrency.toUpperCase() }}
+            <span class="discount-tag" *ngIf="item.offerDiscount">{{
+                item.offerDiscount}}% off </span>
+        </p>
+
+        <p><a [routerLink]="['/shop', item.id, {selectedCurrency}]">see more</a></p>
+    </div>
+
+</div>
