@@ -1,15 +1,19 @@
 import { Injectable } from '@angular/core';
-import { items, Item, IPrices } from './data';
+import { items, IItem, IPrices } from './data';
 @Injectable({
   providedIn: 'root',
 })
 export class ItemsService {
-  protected items: Item[] = items;
+  protected items: IItem[];
+  
+  constructor() {
+    this.items = items;
+  }
 
-  getItems(filtering = (item: Item) => true): Item[] {
+  getItems(filtering = (item: IItem) => true): IItem[] {
     return this.items.filter(filtering);
   }
-  getItem(id: string): Item | undefined {
+  getItem(id: string): IItem | undefined {
     return this.items.find((item) => item.id === id);
   }
 
@@ -23,6 +27,6 @@ export class ItemsService {
     offerDiscount?: number;
   }): void {
     newItem.id = (this.items.length + 1).toString();
-    this.items.push(newItem as Item);
+    this.items.push(newItem as IItem);
   }
 }

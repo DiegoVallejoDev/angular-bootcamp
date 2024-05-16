@@ -9,6 +9,7 @@ import { PaginationPipe } from './pagination.pipe';
 import { PaginationComponent } from './pagination/pagination.component';
 import { ItemFormComponent } from './item-form/item-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ItemPreviewComponent } from './item-preview/item-preview.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     PaginationPipe,
     PaginationComponent,
     ItemFormComponent,
+    ItemPreviewComponent,
   ],
   imports: [CommonModule, ShopRoutingModule, FormsModule, ReactiveFormsModule],
 })

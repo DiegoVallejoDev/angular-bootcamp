@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemsService } from '../items.service';
-import { Item } from '../data';
+import { IItem } from '../data';
 
 @Component({
   selector: 'app-catalog',
   templateUrl: './catalog.component.html',
-  styleUrls: ['./catalog.component.css'],
+  styleUrls: ['./catalog.component.scss'],
 })
 export class CatalogComponent implements OnInit {
-  protected items: Item[] = [];
+  protected items: IItem[] = [];
   protected selectedCurrency: 'usd' | 'eur' | 'gbp' = 'usd';
   protected currentPage: number = 1;
   protected itemsPerPage: number = 5;
   protected onlyDiscounts = false;
   protected filterText = '';
 
-  filterItems = (item: Item): boolean => {
+  filterItems = (item: IItem): boolean => {
     //onlyDiscounts and filterText
     //if item.offerDiscount is different to this.onlyDiscounts then return false
     if (this.onlyDiscounts && this.onlyDiscounts !== !!item.offerDiscount) {
@@ -34,7 +34,7 @@ export class CatalogComponent implements OnInit {
 
   constructor(private ItemsService: ItemsService) {}
 
-  onItemAdded(newItem: Item): void {
+  onItemAdded(newItem: IItem): void {
     this.ItemsService.addItem(newItem);
     this.items = this.ItemsService.getItems(this.filterItems);
   }

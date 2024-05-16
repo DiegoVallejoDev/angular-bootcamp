@@ -1,6 +1,6 @@
 <ng-container *ngIf="items.length > itemsPerPage">
     <button (click)="onPageChange(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
-    <button *ngFor="let page of getPages()" (click)="onPageChange(page)" [disabled]="currentPage === page">{{ page
+    <button *ngFor="let page of pages" (click)="onPageChange(page)" [disabled]="currentPage === page">{{ page
         }}</button>
     <button (click)="onPageChange(currentPage + 1)" [disabled]="currentPage === getTotalPages()">Next</button>
 </ng-container>

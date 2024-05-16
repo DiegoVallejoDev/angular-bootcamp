@@ -2,20 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IPrices } from '../data';
 import { ItemsService } from '../items.service';
-import { Item } from '../data';
+import { IItem } from '../data';
 
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',
-  styleUrls: ['./item.component.css'],
+  styleUrls: ['./item.component.scss'],
 })
 export class ItemComponent implements OnInit {
   //item from router slug
-  protected error:boolean = false;
+  protected error: boolean = false;
   protected itemId: string | null = null;
-  protected item: Item | undefined;
+  protected item: IItem | undefined;
   protected selectedCurrency: keyof IPrices = 'usd';
-  protected selectedPhoto:number = 0;
+  protected selectedPhoto: number = 0;
 
   constructor(
     private route: ActivatedRoute,

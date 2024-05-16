@@ -3,7 +3,7 @@ export interface IPrices {
   eur: number;
   gbp: number;
 }
-export interface Item {
+export interface IItem {
   id: string;
   title: string;
   prices: IPrices;
@@ -25,7 +25,7 @@ const sampleImages = [
   'https://api.slingacademy.com/public/sample-photos/10.jpeg',
 ];
 //20 items
-export const items: Item[] = [
+export const items: IItem[] = [
   {
     id: '1',
     title: 'Item 1',

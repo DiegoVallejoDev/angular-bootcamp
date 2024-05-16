@@ -17,7 +17,7 @@
             <span class="discount-tag" *ngIf="item.offerDiscount">
                 {{ item.offerDiscount }}% off
             </span>
-            <span class="font-1.5">{{ calcDiscount(item.prices, item.offerDiscount)[selectedCurrency] | currency:
+            <span class="font-1-5">{{ calcDiscount(item.prices, item.offerDiscount)[selectedCurrency] | currency:
                 selectedCurrency: true
                 }}</span>
         </span>

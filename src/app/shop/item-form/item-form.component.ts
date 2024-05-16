@@ -9,16 +9,16 @@ import {
   ValidatorFn,
 } from '@angular/forms';
 import { ItemsService } from '../items.service';
-import { Item } from '../data';
+import { IItem } from '../data';
 
 @Component({
   selector: 'app-item-form',
   templateUrl: './item-form.component.html',
-  styleUrls: ['./item-form.component.css'],
+  styleUrls: ['./item-form.component.scss'],
 })
 export class ItemFormComponent {
-  protected showDialog = false;
-  @Output() onItemAdded = new EventEmitter<Item>();
+  protected showDialog: boolean = false;
+  @Output() onItemAdded: EventEmitter<IItem> = new EventEmitter<IItem>();
   itemForm: FormGroup;
   photos: Array<string> = [];
   errorList: string[] = [];
@@ -48,7 +48,7 @@ export class ItemFormComponent {
   }
 
   //custom validator for not repeated title
-  validatorUniqueTitle(title: string, itemList: Item[]): ValidatorFn {
+  validatorUniqueTitle(title: string, itemList: IItem[]): ValidatorFn {
     return ((control: FormControl): ValidationErrors | null => {
       const titleValue = control.value;
       const item = itemList.find((item) => item.title === titleValue);
@@ -77,7 +77,7 @@ export class ItemFormComponent {
 
   onSubmit(): void {
     if (this.itemForm.valid) {
-      const newItem: Item = this.itemForm.value;
+      const newItem: IItem = this.itemForm.value;
       // Reset form
       this.itemForm.reset();
       this.photosArray.clear();
