@@ -7,6 +7,7 @@ import {
   FormControl,
   ValidationErrors,
   ValidatorFn,
+  AbstractControl,
 } from '@angular/forms';
 import { ItemsService } from '../items.service';
 import { IItem } from '../data';
@@ -22,6 +23,7 @@ export class ItemFormComponent {
   itemForm: FormGroup;
   photos: Array<string> = [];
   errorList: string[] = [];
+  pricesArray: any;
 
   constructor(private fb: FormBuilder, private itemsService: ItemsService) {
     this.itemForm = this.fb.group({
@@ -33,15 +35,35 @@ export class ItemFormComponent {
           this.validatorUniqueTitle('', this.itemsService.getItems()),
         ],
       ],
-      prices: this.fb.group({
-        usd: ['', Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/)],
-        eur: ['', Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/)],
-        gbp: ['', Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/)],
-      }),
+      prices: this.fb.array([
+        this.fb.group({
+          name: ['', [Validators.required, this.uniqueTagNameValidator()]],
+          price: this.fb.group({
+            usd: [
+              '',
+              Validators.required,
+              Validators.pattern(/^\d+(\.\d{1,2})?$/),
+            ],
+            eur: [
+              '',
+              Validators.required,
+              Validators.pattern(/^\d+(\.\d{1,2})?$/),
+            ],
+            gbp: [
+              '',
+              Validators.required,
+              Validators.pattern(/^\d+(\.\d{1,2})?$/),
+            ],
+          }),
+        }),
+      ]),
       photos: this.fb.array([
-        this.fb.control('', [Validators.required,
-          Validators.pattern(/^https?:\/\/(?:[a-z0-9\-]+\.)+[a-z]{2,6}(?:\/[^/#?]+)+\.(?:jpg|jpeg|png|gif|webp|avif)$/i
-          )]),
+        this.fb.control('', [
+          Validators.required,
+          Validators.pattern(
+            /^https?:\/\/(?:[a-z0-9\-]+\.)+[a-z]{2,6}(?:\/[^/#?]+)+\.(?:jpg|jpeg|png|gif|webp|avif)$/i
+          ),
+        ]),
       ]),
       description: ['', Validators.required],
       offerDiscount: [
@@ -84,6 +106,50 @@ export class ItemFormComponent {
 
   removePhoto(index: number): void {
     this.photosArray.removeAt(index);
+  }
+  createPriceGroup(): FormGroup {
+    return this.fb.group({
+      name: ['', [Validators.required, this.uniqueTagNameValidator()]],
+      price: this.fb.group({
+        usd: [
+          '',
+          [Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/)],
+        ],
+        eur: [
+          '',
+          [Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/)],
+        ],
+        gbp: [
+          '',
+          [Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/)],
+        ],
+      }),
+    });
+  }
+
+  addPrice(): void {
+    const pricesArray = this.itemForm.get('prices') as FormArray;
+    pricesArray.push(this.createPriceGroup()); //add a new prices subform
+  }
+
+  removePrice(index: number): void {
+    const pricesArray = this.itemForm.get('prices') as FormArray;
+    pricesArray.removeAt(index);
+  }
+
+  // Custom validator to prevent duplicate tag names
+  uniqueTagNameValidator() {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const tagNames = this.itemForm.value.prices.map((priceGroup: any) =>
+        priceGroup.name.toLowerCase()
+      );
+      const currentTagName = control.value.toLowerCase();
+
+      if (tagNames.includes(currentTagName)) {
+        return { duplicateTagName: true };
+      }
+      return null;
+    };
   }
 
   onSubmit(): void {

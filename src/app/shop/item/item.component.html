@@ -10,18 +10,24 @@
 <div *ngIf="item">
     <h3>{{ item.title }} details</h3>
     <p>{{ item.description }}</p>
-    <h2>
-        <span [ngClass]="{ 'striked': item.offerDiscount }"> {{ item.prices[selectedCurrency] | currency:
-            selectedCurrency.toUpperCase(): true }}</span>
-        <span *ngIf="item.offerDiscount">
-            <span class="discount-tag" *ngIf="item.offerDiscount">
-                {{ item.offerDiscount }}% off
+
+    <h4>variants</h4>
+    <ul>
+        <li *ngFor="let price of item.prices">
+            <span>{{ price.name }}:
+                <span [ngClass]="{ 'striked': item.offerDiscount }"> {{ price.price[selectedCurrency] | currency:
+                    selectedCurrency.toUpperCase(): true }}</span>
             </span>
-            <span class="font-1-5">{{ calcDiscount(item.prices, item.offerDiscount)[selectedCurrency] | currency:
-                selectedCurrency.toUpperCase()
-                }}</span>
-        </span>
-    </h2>
+            <span *ngIf="item.offerDiscount">
+                <span class="discount-tag" *ngIf="item.offerDiscount">
+                    {{ item.offerDiscount }}% off
+                </span>
+                <span class="font-1-5">{{ price.price[selectedCurrency] * (1 - item.offerDiscount / 100) | currency:
+                    selectedCurrency.toUpperCase(): true }}</span>
+            </span>
+        </li>
+    </ul>
+
 
 
     <img *ngFor="let photo of item.photos" [src]="photo" alt="item.title" class="thumb"

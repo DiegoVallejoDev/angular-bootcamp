@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { items, IItem, IPrices } from './data';
+import { items, IItem, IPrices, ITag } from './data';
 @Injectable({
   providedIn: 'root',
 })
@@ -21,7 +21,7 @@ export class ItemsService {
   addItem(newItem: {
     id?: string;
     title: string;
-    prices: IPrices;
+    prices: ITag[];
     photos: string[];
     description: string;
     offerDiscount?: number;

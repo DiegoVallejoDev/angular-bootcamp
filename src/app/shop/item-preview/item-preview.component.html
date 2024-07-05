@@ -3,10 +3,13 @@
     <div>
         <h3>{{ item.title }}</h3>
         <p>{{ item.description }}</p>
-        <p>{{ item.prices[selectedCurrency] | currency: selectedCurrency.toUpperCase(): true}}
+        
+        <p>{{ item.prices[0].price[selectedCurrency] | currency: selectedCurrency.toUpperCase(): true}}
             <span class="discount-tag" *ngIf="item.offerDiscount">{{
                 item.offerDiscount}}% off </span>
         </p>
+        
+        
 
         <p><a [routerLink]="['/shop', item.id, {selectedCurrency}]">see more</a></p>
     </div>

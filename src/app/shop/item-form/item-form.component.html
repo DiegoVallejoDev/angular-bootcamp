@@ -14,19 +14,24 @@
             <input type="text" id="title" formControlName="title" required>
         </div>
         <p>pricing</p>
-        <div formGroupName="prices">
-            <div>
-                <label for="usd">USD:</label>
-                <input type="number" id="usd" formControlName="usd" required>
+        <div formArrayName="prices">
+            <div *ngFor="let priceControl of pricesArray.controls; let i = index">
+                <div formGroupName="{{i}}">
+                    <label for="tag{{i}}">Tag {{i + 1}}:</label>
+                    <input type="text" id="tag{{i}}" formControlName="name" required pattern="[a-zA-Z0-9]+">
+                    <div formGroupName="price">
+                        <label for="usd{{i}}">USD:</label>
+                        <input type="number" id="usd{{i}}" formControlName="usd" required>
+                        <label for="eur{{i}}">EUR:</label>
+                        <input type="number" id="eur{{i}}" formControlName="eur" required>
+                        <label for="gbp{{i}}">GBP:</label>
+                        <input type="number" id="gbp{{i}}" formControlName="gbp" required>
+
+                    </div>
+                </div>
+                <button type="button" (click)="removePrice(i)">Remove Price</button>
             </div>
-            <div>
-                <label for="eur">EUR:</label>
-                <input type="number" id="eur" formControlName="eur" required>
-            </div>
-            <div>
-                <label for="gbp">GBP:</label>
-                <input type="number" id="gbp" formControlName="gbp" required>
-            </div>
+            <button type="button" (click)="addPrice()">Add Price</button>
         </div>
         <hr>
 
